@@ -2,6 +2,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, UploadFile, File
 from services.image_service import get_file_info
+from services.ocr_service import extract_label_data
 
 router = APIRouter()
 
@@ -22,8 +23,11 @@ async def upload_label(
 
     file_info = get_file_info(file_path)
 
+    extraction = extract_label_data(file_path)
+
     return {
         "content_type": file.content_type,
         "saved_to": str(file_path),
-        "file_info": file_info
+        "file_info": file_info,
+        "extraction": extraction
     }

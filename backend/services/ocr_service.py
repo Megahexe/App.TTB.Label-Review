@@ -1,14 +1,16 @@
+from pathlib import Path
+
 from models.label_extraction import LabelExtraction
 
 
-def extract_label_data() -> LabelExtraction:
+def extract_label_data(file_path: Path | None = None) -> LabelExtraction:
     """
     Placeholder OCR service.
 
-    Later this will call:
-    - Azure Document Intelligence
-    - Tesseract
-    - Other OCR providers
+    In a future version:
+    - Load image
+    - Run OCR
+    - Extract label fields
 
     For now, return sample data.
     """
