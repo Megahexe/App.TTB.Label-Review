@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from fastapi import APIRouter, UploadFile, File
+from services.image_service import get_file_info
 
 router = APIRouter()
 
@@ -19,9 +20,10 @@ async def upload_label(
     with open(file_path, "wb") as f:
         f.write(contents)
 
+    file_info = get_file_info(file_path)
+
     return {
-        "filename": file.filename,
         "content_type": file.content_type,
-        "file_size_bytes": len(contents),
-        "saved_to": str(file_path)
+        "saved_to": str(file_path),
+        "file_info": file_info
     }
