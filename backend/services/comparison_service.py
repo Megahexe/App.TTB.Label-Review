@@ -16,7 +16,7 @@ def compare_extractions(
     extraction_data: dict
 ) -> dict:
 
-    return {
+    results = {
         "alcohol_content": compare_fields(
             application_data.get("alcohol_content"),
             extraction_data.get("alcohol_content")
@@ -33,4 +33,13 @@ def compare_extractions(
             application_data.get("government_warning_present"),
             extraction_data.get("government_warning_present")
         )
+    }
+
+    return {
+        "summary": {
+            "matches": list(results.values()).count("MATCH"),
+            "mismatches": list(results.values()).count("MISMATCH"),
+            "missing": list(results.values()).count("MISSING")
+        },
+        "results": results
     }
