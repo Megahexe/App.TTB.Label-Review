@@ -14,6 +14,17 @@ The goal is to demonstrate how OCR and automated validation can reduce manual re
 
 ---
 
+## Supporting Documentation
+
+Additional project documentation is available in the `/docs` directory:
+
+- Process Map: `docs/TTB_Process_Map.docx`
+- Workflow Diagram: `docs/TTB_Workflow.svg`
+
+These documents provide a visual overview of the application's architecture, workflow, and decision logic.
+
+---
+
 # Problem Statement
 
 Reviewing alcohol beverage labels is a time-consuming process that requires reviewers to manually inspect labels and compare them against submitted application data.
