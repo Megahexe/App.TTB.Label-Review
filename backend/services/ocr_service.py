@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import pytesseract
-from PIL import Image
+from PIL import Image, ImageEnhance
 
 pytesseract.pytesseract.tesseract_cmd = r"D:\Program Files\Tesseract-OCR\tesseract.exe"
 
@@ -13,6 +13,8 @@ def extract_label_data(file_path: Path | None = None) -> dict:
     if file_path is not None:
         try:
             with Image.open(file_path) as image:
+                image = image.convert("L")
+
                 text = pytesseract.image_to_string(image)
 
             print("\n====== OCR OUTPUT ======")
