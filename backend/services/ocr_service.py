@@ -8,7 +8,7 @@ pytesseract.pytesseract.tesseract_cmd = r"D:\Program Files\Tesseract-OCR\tessera
 from services.extraction_service import extract_fields
 
 
-def extract_label_data(file_path: Path | None = None) -> LabelExtraction:
+def extract_label_data(file_path: Path | None = None) -> dict:
 
     if file_path is not None:
         try:
@@ -18,16 +18,8 @@ def extract_label_data(file_path: Path | None = None) -> LabelExtraction:
             print("\n====== OCR OUTPUT ======")
             print(text)
             print("========================\n")
-            print(text)
+
             return extract_fields(text)
 
         except Exception as ex:
             print(f"OCR Error: {ex}")
-
-    return LabelExtraction(
-        brand_name="OLD TOM DISTILLERY",
-        product_type="Kentucky Straight Bourbon Whiskey",
-        alcohol_content="45%",
-        net_contents="750 mL",
-        government_warning_present=True
-    )
