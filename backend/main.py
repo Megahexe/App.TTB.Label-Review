@@ -4,6 +4,8 @@ from api.upload import router as upload_router
 from models.label_submission import LabelSubmission
 from services.ocr_service import extract_label_data
 from validators.label_validator import validate_label
+from models.application_data import ApplicationData
+from services.comparison_service import compare_extractions
 
 app = FastAPI(
     title="TTB Label Review API",
@@ -41,3 +43,13 @@ def analyze_label(submission: LabelSubmission):
         "extraction": extraction,
         "results": results
     }
+
+@app.post("/compare")
+def compare(
+    application_data: ApplicationData,
+    extraction_data: dict
+):
+    return compare_extractions(
+        application_data.model_dump(),
+        extraction_data
+    )
