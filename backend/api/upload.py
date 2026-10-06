@@ -4,6 +4,8 @@ from fastapi import APIRouter, UploadFile, File
 from services.image_service import get_file_info
 from services.ocr_service import extract_label_data
 
+print("api/upload.py LOADED")
+
 router = APIRouter()
 
 UPLOAD_FOLDER = Path("uploads")
@@ -14,6 +16,8 @@ UPLOAD_FOLDER.mkdir(exist_ok=True)
 async def upload_label(
     file: UploadFile = File(...)
 ):
+    print("UPLOAD ENDPOINT CALLED")
+
     contents = await file.read()
 
     file_path = UPLOAD_FOLDER / file.filename
