@@ -8,7 +8,7 @@ AI-powered alcohol beverage label review and compliance validation tool for TTB 
 
 App.TTB.Label-Review is a proof-of-concept application designed to assist beverage label reviewers by automating portions of the label review process.
 
-The system uses Optical Character Recognition (OCR) to extract text from alcohol beverage labels, identifies key label information, and compares that information against submitted application data.
+The system uses Optical Character Recognition (OCR) to extract text from uploaded beverage label images, identifies key label information, and compares that information against submitted application data.
 
 The goal is to demonstrate how OCR and automated validation can reduce manual review effort and help identify discrepancies between label content and application submissions.
 
@@ -83,8 +83,6 @@ Extracted value:
 }
 ```
 
----
-
 ### Net Contents
 
 Example:
@@ -101,8 +99,6 @@ Extracted value:
 }
 ```
 
----
-
 ### Vintage
 
 Example:
@@ -118,8 +114,6 @@ Extracted value:
   "vintage": "2012"
 }
 ```
-
----
 
 ### Government Warning Detection
 
@@ -257,6 +251,31 @@ App.TTB.Label-Review/
 
 ---
 
+# Prerequisites
+
+Before running the application, install:
+
+- Python
+- Tesseract OCR
+
+Tesseract OCR is required because it is not installed through `requirements.txt`.
+
+After installing Tesseract, verify the installation:
+
+```powershell
+tesseract --version
+```
+
+Expected output:
+
+```text
+tesseract v5.x.x
+```
+
+If the command is not recognized, ensure the Tesseract installation directory has been added to the system PATH and restart PowerShell.
+
+---
+
 # Installation
 
 ## Clone Repository
@@ -265,15 +284,11 @@ App.TTB.Label-Review/
 git clone <repository-url>
 ```
 
----
-
 ## Navigate to Backend
 
 ```powershell
 cd backend
 ```
-
----
 
 ## Create Virtual Environment
 
@@ -281,38 +296,16 @@ cd backend
 python -m venv .venv
 ```
 
----
-
 ## Activate Virtual Environment
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
----
-
 ## Install Dependencies
 
 ```powershell
 pip install -r requirements.txt
-```
-
----
-
-# Tesseract Installation
-
-Install Tesseract OCR and ensure it is available on the system PATH.
-
-Verify installation:
-
-```powershell
-tesseract --version
-```
-
-Example:
-
-```text
-tesseract v5.x.x
 ```
 
 ---
@@ -341,13 +334,13 @@ INFO:     Application startup complete.
 
 # API Documentation
 
-Start the application and open:
+After starting the application, open:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
-Interactive API documentation is provided through Swagger UI.
+Swagger UI provides interactive API documentation and testing.
 
 ---
 
@@ -394,7 +387,7 @@ Supported formats:
 
 ## POST /compare
 
-Compares extracted label fields against application data.
+Compares extracted label data against application data.
 
 ### Example Request
 
@@ -439,13 +432,11 @@ Compares extracted label fields against application data.
 
 ## Step 1
 
-Upload a label image using:
+Upload a beverage label image using:
 
 ```text
 POST /upload
 ```
-
----
 
 ## Step 2
 
@@ -456,8 +447,6 @@ Example:
 ```text
 Alc. 14.1% by Vol
 ```
-
----
 
 ## Step 3
 
@@ -472,8 +461,6 @@ Example:
 }
 ```
 
----
-
 ## Step 4
 
 Submit application data using:
@@ -481,8 +468,6 @@ Submit application data using:
 ```text
 POST /compare
 ```
-
----
 
 ## Step 5
 
@@ -508,13 +493,13 @@ This project is a proof-of-concept.
 
 Known limitations include:
 
-- OCR accuracy depends on label quality
+- OCR accuracy depends on image quality
 - Limited extraction fields
 - Simple rule-based matching
 - No direct integration with TTB systems
-- No production authentication or authorization
+- No authentication or authorization
 - No batch processing implementation
-- No advanced confidence scoring
+- No confidence scoring
 
 ---
 
@@ -533,7 +518,7 @@ Potential future enhancements include:
 
 - Additional field extraction
 - Brand and product identification
-- Expanded government warning validation
+- Enhanced government warning validation
 - OCR image preprocessing
 - Batch processing support
 - Reviewer workflow enhancements
