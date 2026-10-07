@@ -5,7 +5,7 @@ from PIL import Image, ImageEnhance
 
 # pytesseract.pytesseract.tesseract_cmd = r"D:\Program Files\Tesseract-OCR\tesseract.exe"
 
-from services.extraction_service import extract_fields
+from backend.services.extraction_service import extract_fields
 
 
 def extract_label_data(file_path: Path | None = None) -> dict:
