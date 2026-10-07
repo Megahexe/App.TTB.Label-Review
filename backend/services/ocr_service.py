@@ -3,7 +3,7 @@ from pathlib import Path
 import pytesseract
 from PIL import Image, ImageEnhance
 
-pytesseract.pytesseract.tesseract_cmd = r"D:\Program Files\Tesseract-OCR\tesseract.exe"
+# pytesseract.pytesseract.tesseract_cmd = r"D:\Program Files\Tesseract-OCR\tesseract.exe"
 
 from services.extraction_service import extract_fields
 
