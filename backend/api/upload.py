@@ -2,7 +2,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, UploadFile, File
 from backend.services.image_service import get_file_info
-from services.ocr_service import extract_label_data
+from backend.services.ocr_service import extract_label_data
 
 print("api/upload.py LOADED")
 
