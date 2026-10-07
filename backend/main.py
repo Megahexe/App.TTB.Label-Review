@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from api.upload import router as upload_router
+from backend.api.upload import router as upload_router
 from models.label_submission import LabelSubmission
 from services.ocr_service import extract_label_data
 from validators.label_validator import validate_label
