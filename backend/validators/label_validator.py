@@ -1,5 +1,5 @@
-from models.label_submission import LabelSubmission
-from models.label_extraction import LabelExtraction
+from backend.models.label_submission import LabelSubmission
+from backend.models.label_extraction import LabelExtraction
 
 
 def validate_label(
