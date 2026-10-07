@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 
 from backend.api.upload import router as upload_router
-from models.label_submission import LabelSubmission
-from services.ocr_service import extract_label_data
-from validators.label_validator import validate_label
-from models.application_data import ApplicationData
-from services.comparison_service import compare_extractions
+from backend.models.label_submission import LabelSubmission
+from backend.services.ocr_service import extract_label_data
+from backend.validators.label_validator import validate_label
+from backend.models.application_data import ApplicationData
+from backend.services.comparison_service import compare_extractions
 
 app = FastAPI(
     title="TTB Label Review API",
